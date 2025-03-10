@@ -1,0 +1,4 @@
+alt: 'Gatitos, no se puede decir más',
+nombre: 'Artíulo 1',
+precio: 52,
+descripcion: 'descripcion1'

@@ -1,0 +1,79 @@
+
+*{
+    margin: 0px;
+    padding: 0;
+    text-align: center;
+    
+}
+body{
+    background-image: url(imagenes2/stars-in-sky.jpg);
+    background-size: cover;
+}
+.form{
+    width: 480px;
+    background-color:  #0c1a59;
+    padding: 18px;
+    margin: auto;
+    margin-top: 80px;
+    border-radius: 5px;
+    font-family: sans-serif, 'Gill Sans';
+    box-shadow: 7px 13px 37px #000;
+    color: aliceblue;
+    margin-right: 380px;
+}
+.form h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-family: sans-serif,Arial,'Calibri';
+    text-align:center;
+    margin-right: 55px;
+}
+.inputs{
+    border-radius: 5px;
+    border-color: rgb(216, 205, 191);
+    padding: 10px;
+    margin-left: -45px;
+    
+}
+#email.inputs, #direccion.inputs, #nickname.inputs, #password.inputs, 
+#banco.inputs{
+    width: 370px;
+}
+#nombre.inputs,#apellido.inputs{
+    margin-right: 25px;
+    width:170px;
+    margin-left: -20px;
+}
+p{
+    padding-top: 20px;
+    padding-bottom: 10px;
+    margin-right: 50px;
+}
+.boton{
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    width: 250px;
+    height: 45px;
+    border-color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-family:'Franklin Gothic Medium', sans-serif;
+    margin-right: 50px;
+}
+a{
+    color: aliceblue;
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 449px;
+}
+.robot{
+    float: left;
+    margin-left: 180px;
+    margin-top: 80px;
+}
+#vendedor{
+    margin-right: 30px;
+    left: 50px;
+    
+}#comprador{
+    margin-right: 50px;
+}

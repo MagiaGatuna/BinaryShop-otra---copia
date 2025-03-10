@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<html>
+    
+    <head>
+        <title>Bynary Shop</title>
+        <link rel="shortcut icon" href="favicon.ico">
+
+        <style>
+        
+        .box01{
+
+            border: 5px solid red;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: flex-end;
+          }
+          
+        .box02{
+            width: 500px;
+            height: 350px;
+          }
+          
+        .box03{
+            width: 100%;
+            height: 350px;
+          }
+             
+        .box04{
+
+            border: 5px solid red;
+            background: white;
+            color: black;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        
+        .box05{
+            width: 30px;
+            height: 40px;
+          }
+          
+        .box06{
+            width: 100%;
+            height: 40px;
+          }
+                  
+
+        </style>
+    </head>
+
+    <body id=body>
+        <div class="box04">
+            <div class = "box05">
+
+                <p id = "CantidadCarrito" ></p> 
+            </div>
+            <div class = "box05">
+                <img src="iconos/carrito.png" class="icono" height=30px />
+                
+            </div>
+            <div class = "box06">
+                
+                <br><input  class="boton" type="button" value="Ir a carrito" name="IrACarrito" onclick = irACarrito() >
+            </div>
+        </div>
+           
+            <div id="galeria"></div>
+
+         <script>
+            var indice=-1;
+            var carrito = {};
+            var carritoString = "";
+
+
+            var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
+
+            function loadFile() {
+                reader.open('get', 'archivotxt.ini', true); 
+                reader.onreadystatechange = displayContents;
+                //reader.send(null);
+            }
+
+            function displayContents() {
+                if(reader.readyState==4) {
+                    console.log(reader.responseText);
+                    //var el = document.getElementById('contenido-archivo');
+                    //el.innerHTML = reader.responseText;
+                }
+            }
+
+
+            function leerArchivos(){
+
+                loadFile();
+                displayContents();
+            }
+
+    
+            
+           
+
+            var imagenes = [
+            {
+                src: 'imagenes/bs.png',
+                alt: 'Gatitos, no se puede decir más',
+                nombre: 'Artíulo 1',
+                precio: 52,
+                descripcion: 'descripcion1',
+                cantidad: '10',
+                numero: '1'
+            },
+            {
+                src: 'imagenes/bs.png',
+                alt: 'Gatitos, no se puede decir más',
+                nombre: 'Articulo 2',
+                precio: 82,
+                descripcion: 'descripcion2',
+                cantidad: '50',
+                numero: '2'
+            },
+            {
+                src: 'imagenes/bs.png',
+                alt: 'Gatitos, no se puede decir más',
+                nombre: 'Articulo 3',
+                precio: 99,
+                descripcion: 'descripcion3',
+                cantidad: '100',
+                numero: '3'
+            },
+            ];
+
+
+            window.onload = function() {
+               
+                renderizarGaleria(imagenes);
+                
+            };
+
+            function CantidadSuma(cantidadNumero, numeroProducto){
+                var cant = document.getElementById(cantidadNumero).value;
+                var cant2 = parseInt(cant) + 1;
+                var resta =parseInt(numeroProducto)-1
+                var cantInventario =parseInt(imagenes[resta].cantidad);
+                
+                if(cant2 <= cantInventario) document.getElementById(cantidadNumero).value = cant2;
+            }
+
+            function CantidadResta(cantidadNumero){
+                var cant = document.getElementById(cantidadNumero).value;
+                var cant2 = parseInt(cant) -1; 
+               
+                if(cant2 >= 0) document.getElementById(cantidadNumero).value = cant2;
+            }
+
+            function AgregarCarrito(cantidadNumero, numeroProducto){
+                var cant = document.getElementById(cantidadNumero).value;
+                
+                if(cant>0){
+                    indice = indice +1;
+                    
+                    var cant2 = parseInt(cant); 
+
+                    //carrito[indice] = {}
+                    //carrito[indice].columnCount = 2 // 2 cells for row 1
+                    carrito[indice] = numeroProducto + "-" + cant2;
+                    //carrito[indice][1] = cant2;
+                    carritoString = "";
+                    // visit all cells
+                    for (var row in carrito) {
+                        //for (var column in carrito[row]) {
+                           console.log(carrito[row]);
+                           carritoString = carritoString + carrito[row] + "*****";
+                        //}
+
+
+                    }    
+                    document.getElementById("CantidadCarrito").innerHTML = indice + 1;
+                    localStorage.setItem("carritoString",carritoString);
+                }
+            }
+
+            function irACarrito(){
+                location.href="./carrito.html?carritoString="+carritoString;
+            }
+
+        function renderizarGaleria(imagenes) {
+            let html = '';
+            
+            imagenes.forEach(function(imagen){
+                //var mumeroCantidad = "Cantidad"+ ${imagen.numero};
+                html += `
+                <div class="box01">
+                    <div class="box02">
+                        <img src="${imagen.src}" alt="${imagen.alt}" width="200px" />
+                        <h3>${imagen.nombre}</h3>
+                        <p>Precio: ${imagen.precio} Bs.</p>
+                        <p>Cantidad: ${imagen.cantidad}</p>
+                    </div>
+
+                    <div class="box03">
+                        <p>Descripcion: ${imagen.descripcion}</p>
+                        <br> <input class="inputs"  name="cant" value = 0 id= "cantidad${imagen.numero}">
+                        <br><input  class="boton" type="button" value="+" name="boton1" onclick = CantidadSuma("cantidad${imagen.numero}","${imagen.numero}") >
+                        <br><input  class="boton" type="button" value="-" name="boton2" onclick = CantidadResta("cantidad${imagen.numero}")>
+                        <br><input  class="boton" type="button" value="Agregar al carrito" name="agregarCarrito" onclick = AgregarCarrito("cantidad${imagen.numero}","${imagen.numero}")>
+                    </div>
+                    
+                </div>
+                `;
+            });
+            
+            document.getElementById("galeria").innerHTML = html;
+        }
+
+
+            
+     </script>    
+
+    </body>
+
+</html>

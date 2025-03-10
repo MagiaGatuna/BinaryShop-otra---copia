@@ -1,0 +1,96 @@
+.imagen{
+    height: 80px;
+    border: solid;
+    margin-right: 20px;
+}
+header {
+    padding: 10px;
+    display: flex;
+}
+header h2,h3,h4{
+    color: rgba(255, 255, 255, 0.863);
+    margin-top: 32px;
+    font-family: 'Monospace', sans-serif;
+    font-size: 18px;
+}
+header h1{
+    margin-right: 100px;
+    color: whitesmoke;
+    font-family: 'Franklin Gothic Medium',sans-serif;
+}
+header h2{
+    margin-left: 130px;
+}
+h2:hover{
+    background: transparent;
+    border: solid;
+}
+header h3{
+    margin-left: 110px;
+    margin-right: 5px;
+}
+header h4{
+    margin-left: 90px;
+    margin-right: 5px;
+    }
+header .nexttoyou{
+    margin-left: 100px;
+    width: 350px;
+    height: 40px;
+    margin-top: 20px;
+    border-radius: 15px;
+}
+input.nexttoyou{
+    padding: 12px;
+    font-size: 15px;
+}
+body{
+    background-image: url(imagenes2/wallpaper.jpg);
+    background-size: cover;
+}
+h5{
+    text-align: center;
+    margin-top: 50px;
+    color:rgb(214, 230, 250);
+    font-size: 60px;
+    margin-bottom: 5px;
+    font-family:'Franklin Gothic Medium', sans-serif;
+}
+p{
+    color:rgba(226, 235, 247, 0.938);
+    text-align: left;
+    margin-left: 440px;
+    top: 0px;
+    font-size: 22px;
+    font-family:'Monospace', sans-serif;
+    display: inline-block;
+}
+#imagen2{
+    margin:0;
+    position: relative;
+    top: -190px;
+    left: -160px;
+    right:0px;
+    float:right;
+    width: 550px;
+    padding-bottom: 0px;
+}
+section a{
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    background-color: rgb(175, 208, 247);
+    border-radius: 3px;
+    padding: 15px 25px;
+    font-family: 'Franklin Gothic Medium', sans-serif;
+    margin-left: 550px;
+    float: left;
+    margin-top: 70px;
+}
+section a:hover{
+    background: transparent;
+    border: solid;
+    color: #f0f8ff;
+}
+#inicio{
+    margin-left: 40px;
+}

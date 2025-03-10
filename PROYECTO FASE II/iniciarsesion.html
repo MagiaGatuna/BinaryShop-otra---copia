@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>BinaryShop</title>
+    <link rel="stylesheet" href="iniciarsesion.css">
+    <img src="imagenes2/robotinicio.png" alt="ROBOT SALUDA"
+    class="robot">
+
+
+    <style>
+        body {font-family: Arial, Helvetica, sans-serif;}
+        
+        /* The Modal (background) */
+        .modal {
+          display: none; /* Hidden by default */
+          position: fixed; /* Stay in place */
+          z-index: 1; /* Sit on top */
+          padding-top: 100px; /* Location of the box */
+          left: 0;
+          top: 0;
+          width: 100%; /* Full width */
+          height: 100%; /* Full height */
+          overflow: auto; /* Enable scroll if needed */
+          background-color: rgb(0,0,0); /* Fallback color */
+          background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+        }
+        
+        /* Modal Content */
+        .modal-content {
+          background-color: #fefefe;
+          margin: auto;
+          padding: 20px;
+          border: 1px solid #888;
+          width: 80%;
+        }
+        
+        /* The Close Button */
+        .close {
+          color: #aaaaaa;
+          float: right;
+          font-size: 28px;
+          font-weight: bold;
+        }
+        
+        .close:hover,
+        .close:focus {
+          color: #000;
+          text-decoration: none;
+          cursor: pointer;
+        }
+        </style>
+</head>
+<body>
+    <section class="form">
+        <h1> Iniciar sesión</h1>
+       <br> <input class="inputs" type="text" name="nickname" id="nickname" 
+       placeholder="Ingrese su nickname"><br>
+       <br> <input class="inputs" type="password" name="password" id="password" 
+       placeholder="Ingrese su contraseña"><br>
+
+       <label for="vendedor">Vendedor</label>
+       <input id="vendedor" type="radio" name="rol"/>
+       <label for="comprador">Comprador</label> 
+       <input id="comprador" type="radio" name="rol"/> <br>
+
+       <br><input id="ingresar" class="boton" type="button" value="Continuar" name="boton" onclick="Comparar_login()">
+    </section>  
+
+    <br><a href="registro.html">¿Aún no estás registrado? Haz click aquí!</a>
+    
+    <p id="demo"></p>
+
+    <div id="myModal" class="modal">
+
+        <!-- Modal content -->
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <p>Alert:</p>
+          <p id="MensajeM"></p>
+        </div>
+      
+      </div>
+
+    <script>
+        
+
+            var modal = document.getElementById("myModal");
+
+         // Get the button that opens the modal
+            var boton = document.getElementById("ingresar");
+
+            // Get the <span> element that closes the modal
+            var span = document.getElementsByClassName("close")[0];
+
+            // When the user clicks the button, open the modal 
+            boton.onclick = function() {
+                modal.style.display = "block";
+                var nickname = document.getElementById("nickname").value;
+                var password = document.getElementById("password").value;
+                
+                if (nickname==""||nickname== " " || password=="" || password==" "){
+                    var mensaje = "Debes ingresar un nickname y un password";
+                            document.getElementById("MensajeM").innerHTML = mensaje;
+                } else { if (nickname=="root"){
+                        if(password=="dochouse"){
+                            location.href="./admin.html";
+                        }else{
+                            var mensaje = "password incorrecto";
+                            document.getElementById("MensajeM").innerHTML = mensaje;
+                        }
+                } else { if(nickname=="seller456"){
+                    if(password=="Intro123"){
+                            if(document.getElementById("comprador").checked==true){
+                                location.href="./comprador.html";
+                            }else{
+                                var mensaje = "Tipo de cuenta incorrecto o no seleccionado";
+                                document.getElementById("MensajeM").innerHTML = mensaje;
+                                
+                            }
+                        }else{
+                            var mensaje = "password incorrecto";
+                            document.getElementById("MensajeM").innerHTML = mensaje;
+                        }
+                } else { if(nickname=="dancabello"){
+                    if(password=="J5*asdRD.s"){
+                            if(document.getElementById("vendedor").checked==true){
+                                var mensaje = "Bienvenido Vendedor";
+                                document.getElementById("MensajeM").innerHTML = mensaje;
+                            }else{
+                                var mensaje = "Tipo de cuenta incorrecto o no seleccionado";
+                                document.getElementById("MensajeM").innerHTML = mensaje;
+                                
+                            }
+                        }else{
+                            var mensaje = "password incorrecto";
+                            document.getElementById("MensajeM").innerHTML = mensaje;
+                        }
+                }
+
+                }
+
+                } 
+
+                }
+
+                
+            }
+
+            // When the user clicks on <span> (x), close the modal
+            span.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            // When the user clicks anywhere outside of the modal, close it
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+
+
+        function Comparar_login() {
+
+           
+        }
+        </script>
+</body>
+</html>
+
