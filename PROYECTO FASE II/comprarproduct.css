@@ -1,0 +1,116 @@
+body{
+    background-color: #ffffff;
+}
+
+header {
+    display: flex;
+    background-color:#4aa3e7;
+    position:fixed ;
+    width: 100%;
+    top: 0;
+    right: 0;
+    z-index: 100;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 10px;
+    height: 80px;
+}
+.imagen{
+    height: 110px;
+    margin-top: -10px;
+    margin-left: 20px;
+    padding-right: 0px;
+}
+.imagen:hover{
+    color: #000;
+    transition: all 0.3s ease;
+}
+
+h1{
+    font-family: 'Franklin Gothic Medium', sans-serif;
+    color: whitesmoke;
+    margin-right: auto;
+    padding-left: 0px;
+}
+.bx {
+    display: flex;
+    color: #ffffff;
+    align-items: center;
+    width: 50px;
+    height: auto;
+    font-size: 45px;
+}
+.bx:hover{
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.form{
+    width: 400px;
+    background-color: #7cc1f5;
+    padding: 18px;
+    margin: auto;
+    margin-top: 180px;
+    border-radius: 5px;
+    font-family: sans-serif, 'Gill Sans';
+    box-shadow: 7px 13px 37px #000;
+    color: aliceblue;
+    left: 500px;
+    
+}
+.form h1{
+    margin-bottom: 30px;
+    font-size: 30px;
+    font-family: sans-serif,Arial,'Calibri';
+    text-align:center;
+    margin-right: 55px;
+    color: #000;
+}
+.inputs{
+    border-radius: 5px;
+    border-color: rgb(216, 205, 191);
+    padding: 10px;
+    margin-left: 35px;
+    color: #000;
+}
+#Precio.inputs{
+    width: 150px;
+    height: 30px;
+    margin-bottom: 20px;
+}
+#Descripción.inputs{
+    width: 300px;
+    height: 60px;
+    writing-mode:horizontal-tb;
+}
+p{
+    padding-top: 10px;
+    margin-left: 35px;
+    color: #000;
+    font-family:sans-serif;
+    padding-bottom: 0px;
+    margin-bottom: 0px;
+}
+.boton{
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+    width: 180px;
+    height: 45px;
+    border-color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-family:'Franklin Gothic Medium', sans-serif;
+    margin-left: 110px;
+    margin-top: 10px;
+}
+a{
+    color: aliceblue;
+    font-size: 18px;
+    display: inline-block;
+    margin-right: 5px;
+}
+.robot{
+    float: left;
+    margin-left: 230px;
+    margin-top: -280px;
+    width: 300px;
+}

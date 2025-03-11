@@ -1,7 +1,7 @@
 .imagen{
-    height: 80px;
-    border: solid;
-    margin-right: 20px;
+    height: 110px;
+    margin-right: 5px;
+    margin-top: -20px;
 }
 header {
     padding: 10px;
@@ -45,7 +45,7 @@ input.nexttoyou{
     font-size: 15px;
 }
 body{
-    background-image: url(imagenes2/wallpaper.jpg);
+    background-image: url(imagenes/wallpaper.jpg);
     background-size: cover;
 }
 h5{
