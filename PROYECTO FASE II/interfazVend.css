@@ -1,0 +1,85 @@
+*{
+    padding: 0px;
+    margin: 0px;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #688c04;
+}
+.bx:hover{
+    color: #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+#menu{
+    display: none;
+}
+.bx.bx-menu{
+    padding: 15px;
+    float: left;
+    color: #ffffff;
+    font-size: 30px;
+    cursor: pointer;
+}
+.bx.bx-x{
+    color: #000;
+    font-size: 20px;
+    margin-left: 140px;
+    margin-top: 10px;
+    cursor: pointer;
+    padding: 5px;
+}
+.logo{
+    height: 100px;
+    margin-top: -15px;
+    margin-right: -100px;
+    left: 100px;
+}
+
+.icons{
+    display: flex;
+    color: #ffffff;
+    cursor: pointer;
+    gap: 25px;
+    right: 0;
+    align-items: center;
+    font-size: 30px;
+    margin-right: -1100px;
+}
+.list li a{
+    text-decoration: none;
+    color: #080808;
+    display: block;
+    padding: 25px;
+    border-left: 5px solid transparent;
+    border: 0.5px solid rgb(156, 197, 116);
+}
+.list li a:hover{
+   background: #94ac51;
+   transition: 0.5s;
+   border-left: 5px solid #c7c7c7;
+}
+nav{
+    background-color: #a9cc4a;
+    position: absolute;
+    max-width: 250px;
+    height: 100vh;
+    top: 0; left: 0;
+    transition: all 500ms ease;
+    opacity: 0;
+    visibility: hidden;
+}
+#menu:checked ~ nav{
+    opacity: 1;
+    visibility: visible;
+}
+
+
+
