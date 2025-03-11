@@ -437,6 +437,10 @@
                     localStorage.setItem("carritoString",carritoString);
                 }
             }
+	     function irACarrito(){
+                location.href="./carrito.html?carritoString="+carritoString;
+            }
+
 
         function renderizarGaleria(imagenes) {
             let html = '';
