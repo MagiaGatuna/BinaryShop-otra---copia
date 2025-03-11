@@ -6,6 +6,7 @@
     <head>
         <title>Bynary Shop</title>
         <link rel="shortcut icon" href="favicon.ico">
+
         <style>
         
         .box01{
@@ -52,18 +53,15 @@
     </head>
 
     <body id=body>
-        <h2>CARRITO</h2>
+
            
-            <div id="galeria"></div>
-            <div id="precioTotal"></div>
+        <div id="perfiles"></div>
+        <div id="galeria"></div>
 
          <script>
-
-            
             var indice=-1;
             var carrito = {};
             var carritoString = "";
-            var imagenesJSON;
 
 
             var reader = new XMLHttpRequest() || new ActiveXObject('MSXML2.XMLHTTP');
@@ -91,19 +89,26 @@
 
     
             
-           
+            var Perfiles = [
+            {
+                src: 'fotos/images.png',
+                alt: 'Gatitos, no se puede decir más',
+                nickname: 'nickname 1',
+                rol: 'vendedor',
+                numero: '1'
+            },
+            {
+                src: 'fotos/images.jfif',
+                alt: 'Gatitos, no se puede decir más',
+                nickname: 'nickname 2',
+                rol: 'comprador',
+                numero: '2'
+            },
 
+            ];
 
-
-
-            window.onload = function() {
-               //carritoString=sessionStorage.getItem("carritoString");
-                //renderizarGaleria(imagenes);
-
-                            console.log(carritoString);
-                        
-            var imagenes_old = [
-                            {
+            var imagenes = [
+                        {
                 src: 'imagenes/Eco-CepilloDental.jpg',
                 alt: 'la imagen no fue encontrada',
                 nombre: 'Eco-Cepillo Dental',
@@ -401,131 +406,64 @@
                 cantidad: '30',
                 numero: '33'
             },
-
-
             ];
 
-        var imagenes = '['
 
-                var parametro = new URLSearchParams(location.search);
-                carritoString = parametro.get('carritoString');
-            
-                //window.history.replaceState({}, '', '/carrito.html');
-
-
-                console.log(carritoString);
-
-                var linea = "";
-                indice = -1;
-                for(var i = 0; i < carritoString.length; i = i+1){
-                    if(carritoString[i]=="*"){
-                        indice =indice + 1; 
-                        carrito[indice]= linea;
-                        i=i+4;
-                        linea = "";
-                    }else{
-                        linea = linea + carritoString[i];
-                    }
-
-                }
-                    var indiceJSON= -1;
-                for (var row in carrito) {
-                        indiceJSON =indiceJSON + 1;
-                            var campo1 = parseInt(carrito[row].substring(0,carrito[row].indexOf("-")))-1;
-                            var campo2 = parseInt(carrito[row].substring(carrito[row].indexOf("-")+1));
-                            console.log(campo1);
-                            console.log(campo2);
-                            console.log(imagenes_old[campo1].descripcion);
-
-                            imagenes = imagenes + "{\"src\": \"" + imagenes_old[campo1].src + "\",";
-                            imagenes = imagenes + "\"alt\": \"" + imagenes_old[campo1].alt + "\",";
-                            imagenes = imagenes + "\"nombre\": \"" + imagenes_old[campo1].nombre + "\",";
-                            imagenes = imagenes + "\"precio\": " + imagenes_old[campo1].precio + ",";
-                            imagenes = imagenes + "\"descripcion\": \"" + imagenes_old[campo1].descripcion + "\",";
-                            imagenes = imagenes + "\"cantidad\": \"" + imagenes_old[campo1].cantidad + "\",";
-                            imagenes = imagenes + "\"numero\": \"" + indiceJSON + "\",";
-                            imagenes = imagenes + "\"cantidad_carrito\": " + campo2 + "},";
-
-
-
-                    //  src: 'imagenes/bs.png',
-                  //  alt: 'Gatitos, no se puede decir más',
-                 //   nombre: 'Artíulo 1',
-                //    precio: 52,
-                 //   descripcion: 'descripcion1',
-                 //   cantidad: '10',
-                 //   numero: '1'
-                            
-
-
-                }  
-                
-               imagenes = imagenes.substring(0,imagenes.length-1) + "]";
-                console.log(imagenes)
-
-                imagenesJSON = JSON.parse(imagenes);
-                renderizarGaleria(imagenesJSON);
+            window.onload = function() {
+               
+                renderizarGaleria(imagenes);
+                renderizarPerfiles(Perfiles);
             };
-
 
             function CantidadSuma(cantidadNumero, numeroProducto){
                 var cant = document.getElementById(cantidadNumero).value;
                 var cant2 = parseInt(cant) + 1;
-                var resta =parseInt(numeroProducto)
-                var cantInventario =parseInt(imagenesJSON[resta].cantidad);
-                if(cant2 <= cantInventario){
-                document.getElementById(cantidadNumero).value = cant2;
-
+                var resta =parseInt(numeroProducto)-1
+                var cantInventario =parseInt(imagenes[resta].cantidad);
                 
-                imagenesJSON[resta].cantidad_carrito= cant2;
-                renderizarGaleria(imagenesJSON)
-                }
+                if(cant2 <= cantInventario) document.getElementById(cantidadNumero).value = cant2;
             }
 
-            function CantidadResta(cantidadNumero, numeroProducto){
+            function CantidadResta(cantidadNumero){
                 var cant = document.getElementById(cantidadNumero).value;
                 var cant2 = parseInt(cant) -1; 
                
-                if(cant2 >0) {
-                    document.getElementById(cantidadNumero).value = cant2;
-                
-
-                var resta =parseInt(numeroProducto)
-                imagenesJSON[resta].cantidad_carrito= cant2;
-                renderizarGaleria(imagenesJSON)
-                }
+                if(cant2 >= 0) document.getElementById(cantidadNumero).value = cant2;
             }
 
-            function EliminarCarrito(cantidadNumero, numeroProducto){
-                var resta =parseInt(numeroProducto)
-                delete imagenesJSON[resta];
 
-                renderizarGaleria(imagenesJSON)
+            function EliminarProducto(cantidadNumero, numeroProducto){
+                var resta =parseInt(numeroProducto)-1
+                delete imagenes[resta];
+
+                renderizarGaleria(imagenes)
             }
+
+            function EliminarPerfil(cantidadNumero, numeroPerfil){
+                var resta =parseInt(numeroPerfil)-1
+                delete Perfiles[resta];
+
+                renderizarPerfiles(Perfiles)
+            }
+
 
         function renderizarGaleria(imagenes) {
             let html = '';
-            var precioTotal= 0;
+            
             imagenes.forEach(function(imagen){
                 //var mumeroCantidad = "Cantidad"+ ${imagen.numero};
-                var precioParcial= parseInt(imagen.precio)*parseInt(imagen.cantidad_carrito);
-                precioTotal = precioTotal + precioParcial;
                 html += `
                 <div class="box01">
                     <div class="box02">
                         <img src="${imagen.src}" alt="${imagen.alt}" width="200px" />
                         <h3>${imagen.nombre}</h3>
                         <p>Precio: ${imagen.precio} Bs.</p>
-                        <p>Cantidad: ${imagen.cantidad}</p>
                     </div>
 
                     <div class="box03">
                         <p>Descripcion: ${imagen.descripcion}</p>
-                        <br> <input class="inputs"  name="cant" value = ${imagen.cantidad_carrito} id= "cantidad${imagen.numero}">
-                        <br><input  class="boton" type="button" value="+" name="boton1" onclick = CantidadSuma("cantidad${imagen.numero}","${imagen.numero}") >
-                        <br><input  class="boton" type="button" value="-" name="boton2" onclick = CantidadResta("cantidad${imagen.numero}","${imagen.numero}")>
-                        <br><input  class="boton" type="button" value="Eliminar del carrito" name="eliminarCarrito" onclick = EliminarCarrito("cantidad${imagen.numero}","${imagen.numero}")>
-                        <br><p>Precio: ${precioParcial}</p>
+                        <br> <input class="inputs"  name="cant" value = 0 id= "cantidad${imagen.numero}">
+                        <br><input  class="boton" type="button" value="Eliminar producto" name="eliminarProducto" onclick = EliminarProducto("cantidad${imagen.numero}","${imagen.numero}")>
                     </div>
                     
                 </div>
@@ -533,7 +471,31 @@
             });
             
             document.getElementById("galeria").innerHTML = html;
-            document.getElementById("precioTotal").innerHTML = "Precio a pagar: " + precioTotal;
+        }
+
+        function renderizarPerfiles(Perfiles) {
+            let html = '';
+            
+            Perfiles.forEach(function(perfil){
+                //var mumeroCantidad = "Cantidad"+ ${imagen.numero};
+                html += `
+                <div class="box01">
+                    <div class="box02">
+                        <img src="${perfil.src}" alt="${perfil.alt}" width="200px" />
+                    </div>
+
+                    <div class="box03">
+                        <p>Nickname: ${perfil.nickname}</p>
+                        <p>Rol: ${perfil.rol}</p>
+                        <br><input  class="boton" type="button" value="Eliminar perfil" name="eliminarPerfil" onclick = EliminarPerfil("cantidad${perfil.numero}","${perfil.numero}")>
+                
+                    </div>
+                    
+                </div>
+                `;
+            });
+            
+            document.getElementById("perfiles").innerHTML = html;
         }
 
 
